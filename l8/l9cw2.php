@@ -9,9 +9,9 @@
     <fieldset>
         <form method = "post">
             <label for="numberA">Podaj 1 liczbę:</label><br>
-            <input type="number" name="numberA"><br><br>
+            <input name="numberA"><br><br>
             <label for="numberB">Podaj 2 liczbę: </label><br>
-            <input type="number" name="numberB"><br><br>
+            <input name="numberB"><br><br>
             <label>Wybierz działanie:<br>
                 <label><input type="radio" name="operation" value = "+"> +</label><br>
                 <label><input type="radio" name="operation" value = "-"> -</label><br>
@@ -33,7 +33,11 @@
             $b = $_POST["numberB"];
 
             $opt = $_POST["operation"];
-            
+
+            if (is_numeric($a) && is_numeric($b)) {
+            $a = floatval($a);
+            $b = floatval($b);
+
             switch ($opt) {
                 case '+':
                     echo "Wybrane liczby: $a i $b<br>";
@@ -59,6 +63,10 @@
                 default:
                         echo "<p style = 'color::red'>Muszisz  wybrać opcję</p>";
                     break;
+            }
+            }else{
+                echo'<p style = "color::red">Nieprawidlowe danne</p>';
+
             }
         }
     }
