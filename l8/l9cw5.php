@@ -16,7 +16,7 @@
                     <option value="@">@</option>
                     <option value="#">#</option>
                     <option value="^">^</option>
-                    <option value="%">&</option>
+                    <option value="%">%</option>
                 </select>
             </label><br><br>
 
@@ -25,5 +25,31 @@
             <input type="submit" name = "send" value = "Utwórz">
         </form>
     </fieldset>
+
+    <?php
+        if (isset( $_POST['send'])) {
+            if (empty($_POST["num"])) {
+            echo "<p style = 'color:red'>Muszisz podać liczbę</p>";
+            }
+
+            $num = $_POST["num"];
+            $elem = $_POST["selected"];
+
+            if (is_numeric($num)) {
+                $num = floatval($num);
+
+                echo "Wybrałeś $num poziomów piramidy dla znaku: $elem<br>";
+
+                for ($i=0; $i < $num; $i++) { 
+                    for ($j=0; $j <= $i ; $j++) { 
+                        echo "$elem";
+                    }
+                    echo"<br>";
+                }
+            }else{
+                echo'<p style = "color:red">Nieprawidlowe danne</p>';
+            }
+        }
+    ?>
 </body>
 </html>
