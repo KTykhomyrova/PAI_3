@@ -7,47 +7,70 @@
 </head>
 <body>
     <?php
-    $price ="";
-    $len = 0;
+    $price = "";
+    $len = "";
     $sr = "";
-    $error1 ="";
+    $error1 = "";
     $error2 = "";
     $error3 = "";
     $ok = false;
 
     if (isset($_POST['send'])) {
-        $price = $_POST["price"];
-        if ($price ="") {
-            $error1 = "uzupełnij pole";
-        }elseif (!is_numeric($price) || $price < 0) {
-            $error2 = "Podaj prawidłową liczbę";
-        }
-        else {
-            $ok = true;
+
+        $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT);
+        if ($price == false || $price <= 0) {
+            $error1 = "Podaj prawidłową cenę (liczba dodatnia)";
         }
 
-        if (empty($_POST["komen"])) {
-            $error2 = "uzupełnij pole";
-        } else {
-            $komen = htmlspecialchars($_POST["komen"]);
+        $len = filter_input(INPUT_POST, "len", FILTER_VALIDATE_INT);
+        if ($len == false || $len <= 0) {
+            $error2 = "Podaj prawidłową ilość kilometrów";
         }
 
-        if ($error1 === "" && $error2 === "") {
+        $sr = filter_input(INPUT_POST, "sr", FILTER_VALIDATE_FLOAT);
+        if ($sr == false || $sr <= 0) {
+            $error3 = "Podaj prawidłowe spalanie";
+        }
+
+        if ($error1 == "" && $error2 == "" && $error3 == "") {
             $ok = true;
         }
     }
     ?>
+
     <fieldset>
         <form method="post">
-            <label>Koszt benzyny:<br><input type="text" name="price"><?php echo htmlspecialchars($price); ?></label>
+            <label>Koszt benzyny:<br>
+                <input type="text" name="price" value="<?php echo htmlspecialchars($_POST['price'] ?? "") ?>">
+            </label>
             <span style="color:red;"><?php echo $error1; ?></span>
-            <label ><br>Ilość kilometrów:<br> <input type="number" name="len"><?php echo $len; ?></label>
+
+            <br><br>
+
+            <label>Ilość kilometrów:<br>
+                <input type="number" name="len" value="<?php echo htmlspecialchars($_POST['len'] ?? "") ?>">
+            </label>
             <span style="color:red;"><?php echo $error2; ?></span>
-            <label><br>Średnie spalanie: <input type="text" name = "sr"><?php echo htmlspecialchars($sr); ?></label>
+
+            <br><br>
+
+            <label>Średnie spalanie:<br>
+                <input type="text" name="sr" value="<?php echo htmlspecialchars($_POST['sr'] ?? "") ?>">
+            </label>
             <span style="color:red;"><?php echo $error3; ?></span>
 
-            <br><br><input type="submit" name="send" value="Wyślij">
+            <br><br>
+            <input type="submit" name="send" value="Wyślij">
         </form>
     </fieldset>
+
+    <?php if ($ok): ?>
+        <h2>Wynik:</h2>
+        <?php
+            $przejazd = ($len * $sr / 100) * $price;
+            echo "<p>Koszt przejazdu: <strong>" . number_format($przejazd, 2, ',', ' ') . " zł</strong></p>";
+        ?>
+    <?php endif; ?>
+
 </body>
 </html>
