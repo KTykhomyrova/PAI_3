@@ -1,0 +1,72 @@
+body {
+    font-family: Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: rgb(107, 142, 35);
+    color: white;
+    text-align: center;
+    padding: 3px;
+}
+
+#arch {
+    background-color: rgb(255, 218, 185);
+    padding: 3px;
+}
+
+#main {
+    display: flex;
+    background-color: rgb(255, 239, 213);
+    height: 550px;
+}
+
+#left, #right {
+    background-color: rgb(255, 239, 213);
+    width: 27%;
+    height: 550px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#middle {
+    background-color: rgb(255, 239, 213);
+    width: 46%;
+    height: 550px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+h3::first-letter {
+    color: green;
+}
+
+#middle img {
+    height: 90px;
+    margin: 7px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+#middle img:hover {
+    background-color: rgb(255, 218, 185);
+}
+#left table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#left td {
+    padding: 5px;
+}

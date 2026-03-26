@@ -1,0 +1,12 @@
+kw1
+SELECT id, cel, cena FROM wycieczki where dostepna = 0;
+
+kw2
+SELECT nazwaPliku, podpis FROM zdjecia ORDER BY podpis DESC;
+
+kw3
+SELECT podpis, cena, cel from zdjecia, wycieczki where zdjecia.id = wycieczki.zdjecia_id and cena < 1200;
+
+kw4
+ALTER TABLE wycieczki
+DROP COLUMN dataWyjazdu;

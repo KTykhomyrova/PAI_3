@@ -1,0 +1,52 @@
+*{
+    font-family: Helvetica;
+}
+header, section{
+    display: flex;
+}
+
+#h_left, #h_right{
+    background-color: rgb(70, 130, 180);
+    color: white;
+    width: 25%;
+    height: 80px;
+}
+
+#h_middle{
+    background-color: rgb(70, 130, 180);
+    color: white;
+    width: 50%;
+    height: 80px;
+    text-align: center;
+}
+
+main{
+    background-color: rgb(224, 255, 255);
+    padding: 40px;
+}
+
+#left, #right{
+    background-color: rgb(70, 130, 180);
+    width: 50%;
+    height: 200px;
+    text-align: center;
+}
+
+footer{
+    background-color: rgb(224, 255, 255);
+}
+
+table{
+    border: solid blue 1px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td{
+    border: solid blue 1px;
+}
+th{
+    border: solid blue 1px;
+    background-color: blue;
+    color: white;
+}
