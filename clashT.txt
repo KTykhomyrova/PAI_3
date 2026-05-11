@@ -1,0 +1,234 @@
+In a game there are n players. After the game there will be hand shaking between all pairs of players.
+So we have to find how many hand shakes take place.
+
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine(n * (n - 1) / 2);
+    }
+}
+
+
+
+
+Write a program that prints the numbers from 1 to N except for multiples of 5 where you have to print "Foo" and for the multiples of 7 where you have to print "Bar". For numbers which are multiples of both 5 and 7 print "FooBar".
+
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= N; i++)
+        {
+            if (i%5 == 0 && i%7!=0)
+            {
+                Console.WriteLine("Foo");
+            }
+            else if (i%7==0 && i%5!=0)
+            {
+                Console.WriteLine("Bar");
+            }
+            else if (i%5==0 && i%7==0)
+            {
+                Console.WriteLine("FooBar");
+            }
+            else
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+
+The game mode is REVERSE: You do not have access to the statement. You have to guess what to do by observing the following set of tests:
+01 Test 1
+Input
+Expected output
+3
+Alice
+Bob
+Charlie
+Alice Bob
+Bob Charlie
+Charlie Alice
+
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+        List<string> PLAYER = new List<string>();
+
+        for (int i = 0; i < N; i++)
+        {
+            PLAYER.Add(Console.ReadLine());
+        }
+
+        for (int i = 0; i < N; i++)
+        {
+            string fir = PLAYER[i];
+            string sec = PLAYER[(i + 1) % N];
+
+            Console.WriteLine($"{fir} {sec}");
+        }
+    }
+}
+
+
+INPUT:
+A string number which contains a hexadecimal number in capitals.
+
+OUTPUT:
+The decimal value of the given number.
+
+CONSTRAINTS:
+number represents a positive integer ≤ 10000000.
+
+EXAMPLE:
+Input
+F
+Output
+15
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string number = Console.ReadLine();
+
+         dec = Convert.ToInt32(number, 16);
+
+        Console.WriteLine(dec);
+    }
+}
+
+
+The game mode is REVERSE: You do not have access to the statement. You have to guess what to do by observing the following set of tests:
+01 Test 1
+Input
+Expected output
+5
+2
+2
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int N = int.Parse(Console.ReadLine());
+        int M = int.Parse(Console.ReadLine());
+
+        if (M == 0) 
+        {
+            Console.WriteLine(0);
+        }
+        else 
+        {
+            Console.WriteLine(N / M);
+        }
+
+
+    }
+} 
+
+
+A warrior is fighting a slime boss. The health of the slime boss is H.
+
+On each turn, the warrior can attack a slime. When a slime is attacked, the following happens:
+- If the slime's health is 1, it disappears.
+- If the slime's health is X, which is greater than 1, it splits into two slimes with health X/2, rounded down.
+
+The warrior wins when all the slimes have disappeared. Find the number of attacks they need to use before winning.
+Input
+Line 1: An integer H: the initial health of the slime boss.
+Output
+Line 1: The number of attacks the warrior needs to use before winning.
+Constraints
+1 ≤ H ≤ 10⁶
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        int H = int.Parse(Console.ReadLine());
+
+        Console.WriteLine(Attacks(H));
+    }
+    static int Attacks(int h)
+    {
+        
+        if (h == 1)
+            return 1;
+
+    
+        return 1 + 2 * Attacks(h / 2);
+    }
+}
